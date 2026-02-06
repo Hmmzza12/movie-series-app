@@ -3,7 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { validateEmail, validatePassword, validateUsername } from '../../utils/validators';
 
+import LightRays from '../LightRays';
+
 const Register = () => {
+    // ...
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -16,13 +19,11 @@ const Register = () => {
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
+        // ...
         e.preventDefault();
         setError('');
 
@@ -58,8 +59,24 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center px-4">
-            <div className="max-w-md w-full bg-netflix-darkGray p-8 rounded-lg shadow-xl">
+        <div className="min-h-screen flex items-center justify-center px-4 relative">
+            <div className="fixed inset-0 w-full h-full -z-10 bg-black">
+                <LightRays
+                    raysOrigin="top-center"
+                    raysColor="#ffffff"
+                    raysSpeed={1}
+                    lightSpread={0.5}
+                    rayLength={8}
+                    followMouse={true}
+                    mouseInfluence={0.1}
+                    noiseAmount={0}
+                    distortion={0}
+                    pulsating={false}
+                    fadeDistance={2.5}
+                    saturation={1}
+                />
+            </div>
+            <div className="max-w-md w-full bg-netflix-darkGray p-8 rounded-lg shadow-xl z-10">
                 <h2 className="text-3xl font-bold text-center mb-6">Sign Up</h2>
 
                 {error && (

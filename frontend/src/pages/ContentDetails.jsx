@@ -117,7 +117,7 @@ const ContentDetails = ({ type }) => {
     if (loading) return <Loading />;
     if (!content) {
         return (
-            <div className="min-h-screen bg-netflix-black text-white flex flex-col items-center justify-center">
+            <div className="min-h-screen text-white flex flex-col items-center justify-center">
                 <h2 className="text-2xl font-bold mb-4">Content Not Found</h2>
                 <button onClick={() => navigate(-1)} className="btn-secondary">Go Back</button>
             </div>
@@ -144,7 +144,7 @@ const ContentDetails = ({ type }) => {
     };
 
     return (
-        <div className="min-h-screen bg-netflix-black text-white">
+        <div className="min-h-screen text-white">
             {/* Back Button - Fixed Position */}
             <div className="fixed top-20 left-4 z-40">
                 <button
@@ -157,7 +157,7 @@ const ContentDetails = ({ type }) => {
 
             {/* Hero Section */}
             <div
-                className="relative h-[85vh] bg-cover bg-center bg-netflix-black"
+                className="relative h-[85vh] bg-cover bg-center"
                 style={{ backgroundImage: `url(${getImageUrl(backdropPath, 'original')})` }}
             >
                 {/* Lighter gradient to show more background */}

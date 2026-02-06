@@ -10,13 +10,15 @@ import Series from './pages/Series';
 import Search from './pages/Search';
 import ContentDetails from './pages/ContentDetails';
 import Profile from './pages/Profile';
+import GlobalBackground from './components/common/GlobalBackground';
 import './index.css';
 
 function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="min-h-screen bg-netflix-black">
+        <div className="relative min-h-screen text-netflix-white">
+          <GlobalBackground />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

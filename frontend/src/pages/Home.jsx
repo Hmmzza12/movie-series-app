@@ -71,7 +71,7 @@ const Home = () => {
             </section>
 
             {/* Trending Series */}
-            <section className="py-12 px-4 bg-netflix-darkGray">
+            <section className="py-12 px-4">
                 <div className="max-w-7xl mx-auto">
                     <h2 className="text-3xl font-bold mb-6">Trending TV Series</h2>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
