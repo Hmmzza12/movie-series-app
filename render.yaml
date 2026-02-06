@@ -1,0 +1,44 @@
+services:
+  # BACKEND SERVICE
+  - type: web
+    name: movie-catalog-backend
+    env: node
+    root: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TMDB_BASE_URL
+        value: https://api.themoviedb.org/3
+      # Secrets (User must input these in Render Dashboard)
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: TMDB_API_KEY
+        sync: false
+      # Automatically link Frontend URL for CORS
+      - key: CLIENT_URL
+        fromService:
+          type: static
+          name: movie-catalog-frontend
+          property: url
+
+  # FRONTEND SERVICE
+  - type: static
+    name: movie-catalog-frontend
+    env: static
+    root: frontend
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    envVars:
+      - key: VITE_TMDB_IMAGE_BASE_URL
+        value: https://image.tmdb.org/t/p
+      # Automatically link Backend URL
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: movie-catalog-backend
+          property: url

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_URL } from '../utils/constants';
 
 const axiosInstance = axios.create({
-    baseURL: API_URL
+    baseURL: API_URL.endsWith('/api') ? API_URL : `${API_URL}/api`
 });
 
 // Request interceptor to add auth token
